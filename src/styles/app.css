@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary-color: #3b82f6;
+    --secondary-color: #10b981;
+    --accent-color: #8b5cf6;
+    --background-light: #f9fafb;
+    --background-dark: #111827;
+    --text-light: #111827;
+    --text-dark: #f9fafb;
+  }
+
   html {
     color-scheme: light dark;
   }

@@ -18,6 +18,14 @@
       "id": "2630f7ec5f544f759472ec4cfc75842e",
     },
   ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "prod-d1-tutorial",
+      "database_id": "fc1e63f6-44a3-4e74-b80a-2caa45645436",
+      "migrations_dir": "drizzle"
+    }
+  ],
   // "routes": [
   //   {
   //     "custom_domain": true,
