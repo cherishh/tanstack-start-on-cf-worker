@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@neondatabase/serverless':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@tanstack/react-router':
         specifier: ^1.116.0
         version: 1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -16,13 +19,13 @@ importers:
         version: 1.120.6(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@tanstack/router-core@1.120.5)(csstype@3.1.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tiny-invariant@1.3.3)
       '@tanstack/react-start':
         specifier: ^1.116.1
-        version: 1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)
+        version: 1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
       drizzle-orm:
         specifier: ^0.43.1
-        version: 0.43.1(@cloudflare/workers-types@4.20250522.0)
+        version: 0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -32,9 +35,12 @@ importers:
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
       vinxi:
         specifier: 0.5.3
-        version: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+        version: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250522.0
@@ -1003,6 +1009,10 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  '@neondatabase/serverless@1.0.0':
+    resolution: {integrity: sha512-XWmEeWpBXIoksZSDN74kftfTnXFEGZ3iX8jbANWBc+ag6dsiQuvuR4LgB0WdCOKMb5AQgjqgufc0TgAsZubUYw==}
+    engines: {node: '>=19.0.0'}
+
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
 
@@ -1542,6 +1552,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/pg@8.15.2':
+    resolution: {integrity: sha512-+BKxo5mM6+/A1soSHBI7ufUglqYXntChLDyTbvcAn1Lawi9J7J9Ok3jt6w7I0+T/UDJ4CyhHk66+GZbwmkYxSg==}
 
   '@types/react-dom@19.1.5':
     resolution: {integrity: sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==}
@@ -3189,6 +3202,9 @@ packages:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
     engines: {node: '>= 0.4'}
 
+  obuf@1.1.2:
+    resolution: {integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==}
+
   ofetch@1.4.1:
     resolution: {integrity: sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw==}
 
@@ -3305,6 +3321,21 @@ packages:
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
 
+  pg-int8@1.0.1:
+    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
+    engines: {node: '>=4.0.0'}
+
+  pg-numeric@1.0.2:
+    resolution: {integrity: sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw==}
+    engines: {node: '>=4'}
+
+  pg-protocol@1.10.0:
+    resolution: {integrity: sha512-IpdytjudNuLv8nhlHs/UrVBhU0e78J0oIS/0AVdTbWxSOkFUVdsHC/NrorO6nXsQNDTT1kzDSOMJubBQviX18Q==}
+
+  pg-types@4.0.2:
+    resolution: {integrity: sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==}
+    engines: {node: '>=10'}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -3376,6 +3407,25 @@ packages:
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
+
+  postgres-array@3.0.4:
+    resolution: {integrity: sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ==}
+    engines: {node: '>=12'}
+
+  postgres-bytea@3.0.0:
+    resolution: {integrity: sha512-CNd4jim9RFPkObHSjVHlVrxoVQXz7quwNFpz7RY1okNNme49+sVyiTvTRobiLV548Hx/hb1BG+iE7h9493WzFw==}
+    engines: {node: '>= 6'}
+
+  postgres-date@2.1.0:
+    resolution: {integrity: sha512-K7Juri8gtgXVcDfZttFKVmhglp7epKb1K4pgrkLxehjqkrgPhfG6OO8LHLkfaqkbpjNRnra018XwAr1yQFWGcA==}
+    engines: {node: '>=12'}
+
+  postgres-interval@3.0.0:
+    resolution: {integrity: sha512-BSNDnbyZCXSxgA+1f5UU2GmwhoI0aU5yMxRGO8CdFEcY2BQF9xm/7MqKnYoM1nJDk8nONNWDk9WeSmePFhQdlw==}
+    engines: {node: '>=12'}
+
+  postgres-range@1.1.4:
+    resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
 
   precinct@11.0.5:
     resolution: {integrity: sha512-oHSWLC8cL/0znFhvln26D14KfCQFFn4KOLSw6hmLhd+LQ2SKt9Ljm89but76Pc7flM9Ty1TnXyrA2u16MfRV3w==}
@@ -4900,6 +4950,11 @@ snapshots:
       - encoding
       - supports-color
 
+  '@neondatabase/serverless@1.0.0':
+    dependencies:
+      '@types/node': 22.15.21
+      '@types/pg': 8.15.2
+
   '@netlify/binary-info@1.0.0': {}
 
   '@netlify/blobs@9.1.1':
@@ -5267,7 +5322,7 @@ snapshots:
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  '@tanstack/react-start-client@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
+  '@tanstack/react-start-client@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
     dependencies:
       '@tanstack/react-router': 1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tanstack/router-core': 1.120.5
@@ -5278,7 +5333,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
-      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5321,7 +5376,7 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/react-start-config@1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)':
+  '@tanstack/react-start-config@1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
       '@tanstack/react-start-plugin': 1.115.0(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       '@tanstack/router-core': 1.120.5
@@ -5331,11 +5386,11 @@ snapshots:
       '@tanstack/start-server-functions-handler': 1.120.5
       '@vitejs/plugin-react': 4.4.1(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))
       import-meta-resolve: 4.1.0
-      nitropack: 2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))
+      nitropack: 2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))
       ofetch: 1.4.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       vite: 6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       zod: 3.25.20
     transitivePeerDependencies:
@@ -5412,11 +5467,11 @@ snapshots:
       - tsx
       - yaml
 
-  '@tanstack/react-start-router-manifest@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
+  '@tanstack/react-start-router-manifest@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
     dependencies:
       '@tanstack/router-core': 1.120.5
       tiny-invariant: 1.3.3
-      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5474,13 +5529,13 @@ snapshots:
       tiny-warning: 1.0.3
       unctx: 2.4.1
 
-  '@tanstack/react-start@1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)':
+  '@tanstack/react-start@1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)':
     dependencies:
-      '@tanstack/react-start-client': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
-      '@tanstack/react-start-config': 1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)
-      '@tanstack/react-start-router-manifest': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      '@tanstack/react-start-client': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      '@tanstack/react-start-config': 1.120.5(@tanstack/react-router@1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(terser@5.39.2)(tsx@4.19.4)(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)
+      '@tanstack/react-start-router-manifest': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       '@tanstack/react-start-server': 1.120.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@tanstack/start-api-routes': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      '@tanstack/start-api-routes': 1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       '@tanstack/start-server-functions-client': 1.120.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       '@tanstack/start-server-functions-handler': 1.120.5
       '@tanstack/start-server-functions-server': 1.119.2(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
@@ -5627,11 +5682,11 @@ snapshots:
       - tsx
       - yaml
 
-  '@tanstack/start-api-routes@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
+  '@tanstack/start-api-routes@1.120.5(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)':
     dependencies:
       '@tanstack/router-core': 1.120.5
       '@tanstack/start-server-core': 1.120.5
-      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
+      vinxi: 0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -5802,6 +5857,12 @@ snapshots:
       undici-types: 6.21.0
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/pg@8.15.2':
+    dependencies:
+      '@types/node': 22.15.21
+      pg-protocol: 1.10.0
+      pg-types: 4.0.2
 
   '@types/react-dom@19.1.5(@types/react@19.1.5)':
     dependencies:
@@ -6364,9 +6425,9 @@ snapshots:
       '@deno/shim-deno': 0.19.2
       undici-types: 5.28.4
 
-  db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)):
+  db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)):
     optionalDependencies:
-      drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250522.0)
+      drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)
 
   debug@2.6.9:
     dependencies:
@@ -6470,9 +6531,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0):
+  drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2):
     optionalDependencies:
       '@cloudflare/workers-types': 4.20250522.0
+      '@neondatabase/serverless': 1.0.0
+      '@types/pg': 8.15.2
 
   dunder-proto@1.0.1:
     dependencies:
@@ -7362,7 +7425,7 @@ snapshots:
       mlly: 1.7.4
       pkg-types: 2.1.0
 
-  nitropack@2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)):
+  nitropack@2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@netlify/functions': 3.1.8(rollup@4.41.0)
@@ -7384,7 +7447,7 @@ snapshots:
       cookie-es: 2.0.0
       croner: 9.0.0
       crossws: 0.3.5
-      db0: 0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))
+      db0: 0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))
       defu: 6.1.4
       destr: 2.0.5
       dot-prop: 9.0.0
@@ -7430,7 +7493,7 @@ snapshots:
       unenv: 2.0.0-rc.17
       unimport: 5.0.1
       unplugin-utils: 0.2.4
-      unstorage: 1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(ioredis@5.6.1)
+      unstorage: 1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(ioredis@5.6.1)
       untyped: 2.0.0
       unwasm: 0.3.9
       youch: 4.1.0-beta.7
@@ -7537,6 +7600,8 @@ snapshots:
 
   object-inspect@1.13.4: {}
 
+  obuf@1.1.2: {}
+
   ofetch@1.4.1:
     dependencies:
       destr: 2.0.5
@@ -7632,6 +7697,22 @@ snapshots:
 
   perfect-debounce@1.0.0: {}
 
+  pg-int8@1.0.1: {}
+
+  pg-numeric@1.0.2: {}
+
+  pg-protocol@1.10.0: {}
+
+  pg-types@4.0.2:
+    dependencies:
+      pg-int8: 1.0.1
+      pg-numeric: 1.0.2
+      postgres-array: 3.0.4
+      postgres-bytea: 3.0.0
+      postgres-date: 2.1.0
+      postgres-interval: 3.0.0
+      postgres-range: 1.1.4
+
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -7697,6 +7778,18 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  postgres-array@3.0.4: {}
+
+  postgres-bytea@3.0.0:
+    dependencies:
+      obuf: 1.1.2
+
+  postgres-date@2.1.0: {}
+
+  postgres-interval@3.0.0: {}
+
+  postgres-range@1.1.4: {}
 
   precinct@11.0.5:
     dependencies:
@@ -8367,7 +8460,7 @@ snapshots:
       picomatch: 4.0.2
       webpack-virtual-modules: 0.6.2
 
-  unstorage@1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(ioredis@5.6.1):
+  unstorage@1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(ioredis@5.6.1):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -8378,7 +8471,7 @@ snapshots:
       ofetch: 1.4.1
       ufo: 1.6.1
     optionalDependencies:
-      db0: 0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))
+      db0: 0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))
       ioredis: 5.6.1
 
   untun@0.1.3:
@@ -8429,7 +8522,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  vinxi@0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0):
+  vinxi@0.5.3(@types/node@22.15.21)(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))(ioredis@5.6.1)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0):
     dependencies:
       '@babel/core': 7.27.1
       '@babel/plugin-syntax-jsx': 7.27.1(@babel/core@7.27.1)
@@ -8451,7 +8544,7 @@ snapshots:
       hookable: 5.5.3
       http-proxy: 1.18.1
       micromatch: 4.0.8
-      nitropack: 2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0))
+      nitropack: 2.11.12(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2))
       node-fetch-native: 1.6.6
       path-to-regexp: 6.3.0
       pathe: 1.1.2
@@ -8462,7 +8555,7 @@ snapshots:
       ufo: 1.6.1
       unctx: 2.4.1
       unenv: 1.10.0
-      unstorage: 1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)))(ioredis@5.6.1)
+      unstorage: 1.16.0(db0@0.3.2(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250522.0)(@neondatabase/serverless@1.0.0)(@types/pg@8.15.2)))(ioredis@5.6.1)
       vite: 6.3.5(@types/node@22.15.21)(jiti@2.4.2)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
       zod: 3.25.20
     transitivePeerDependencies:
