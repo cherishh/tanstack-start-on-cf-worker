@@ -2,8 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tanstack-start-on-workers-v0",
   "main": ".output/server/index.mjs",
-  "compatibility_date": "2025-04-10",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2025-04-14",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "assets": {
     "directory": ".output/public",
   },
@@ -12,14 +14,14 @@
   },
   "kv_namespaces": [
     {
-      "binding": "CACHE",
-      "id": "5d8a8ea387f348f7a156ffd98384998c",
+      "binding": "TANSTACK",
+      "id": "2630f7ec5f544f759472ec4cfc75842e",
     },
   ],
-  "routes": [
-    {
-      "custom_domain": true,
-      "pattern": "tanstackstart.backpine.com",
-    },
-  ],
+  // "routes": [
+  //   {
+  //     "custom_domain": true,
+  //     "pattern": "tanstackstart.backpine.com",
+  //   },
+  // ],
 }
