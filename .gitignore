@@ -23,3 +23,6 @@ yarn.lock
 
 .wrangler
 .dev.vars
+.dev.vars.production
+.dev.vars.staging
+.dev.vars.local
