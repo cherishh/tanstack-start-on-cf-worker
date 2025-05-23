@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as WelcomeImport } from './routes/welcome'
 import { Route as RedirectImport } from './routes/redirect'
 import { Route as DeferredImport } from './routes/deferred'
 import { Route as PathlessLayoutImport } from './routes/_pathlessLayout'
@@ -18,6 +19,8 @@ import { Route as PostsRouteImport } from './routes/posts.route'
 import { Route as IndexImport } from './routes/index'
 import { Route as UserIndexImport } from './routes/user/index'
 import { Route as PostsIndexImport } from './routes/posts.index'
+import { Route as LoginIndexImport } from './routes/login/index'
+import { Route as DashboadIndexImport } from './routes/dashboad/index'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
 import { Route as PostsPostIdDeepImport } from './routes/posts_.$postId.deep'
@@ -25,6 +28,12 @@ import { Route as PathlessLayoutNestedLayoutRouteBImport } from './routes/_pathl
 import { Route as PathlessLayoutNestedLayoutRouteAImport } from './routes/_pathlessLayout/_nested-layout/route-a'
 
 // Create/Update Routes
+
+const WelcomeRoute = WelcomeImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const RedirectRoute = RedirectImport.update({
   id: '/redirect',
@@ -65,6 +74,18 @@ const PostsIndexRoute = PostsIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PostsRouteRoute,
+} as any)
+
+const LoginIndexRoute = LoginIndexImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboadIndexRoute = DashboadIndexImport.update({
+  id: '/dashboad/',
+  path: '/dashboad/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PostsPostIdRoute = PostsPostIdImport.update({
@@ -139,6 +160,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RedirectImport
       parentRoute: typeof rootRoute
     }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeImport
+      parentRoute: typeof rootRoute
+    }
     '/_pathlessLayout/_nested-layout': {
       id: '/_pathlessLayout/_nested-layout'
       path: ''
@@ -152,6 +180,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/posts/$postId'
       preLoaderRoute: typeof PostsPostIdImport
       parentRoute: typeof PostsRouteImport
+    }
+    '/dashboad/': {
+      id: '/dashboad/'
+      path: '/dashboad'
+      fullPath: '/dashboad'
+      preLoaderRoute: typeof DashboadIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginIndexImport
+      parentRoute: typeof rootRoute
     }
     '/posts/': {
       id: '/posts/'
@@ -243,7 +285,10 @@ export interface FileRoutesByFullPath {
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/welcome': typeof WelcomeRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/dashboad': typeof DashboadIndexRoute
+  '/login': typeof LoginIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/user': typeof UserIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -256,7 +301,10 @@ export interface FileRoutesByTo {
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/welcome': typeof WelcomeRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/dashboad': typeof DashboadIndexRoute
+  '/login': typeof LoginIndexRoute
   '/posts': typeof PostsIndexRoute
   '/user': typeof UserIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -271,8 +319,11 @@ export interface FileRoutesById {
   '/_pathlessLayout': typeof PathlessLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/welcome': typeof WelcomeRoute
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
+  '/dashboad/': typeof DashboadIndexRoute
+  '/login/': typeof LoginIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/user/': typeof UserIndexRoute
   '/_pathlessLayout/_nested-layout/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -288,7 +339,10 @@ export interface FileRouteTypes {
     | ''
     | '/deferred'
     | '/redirect'
+    | '/welcome'
     | '/posts/$postId'
+    | '/dashboad'
+    | '/login'
     | '/posts/'
     | '/user'
     | '/route-a'
@@ -300,7 +354,10 @@ export interface FileRouteTypes {
     | ''
     | '/deferred'
     | '/redirect'
+    | '/welcome'
     | '/posts/$postId'
+    | '/dashboad'
+    | '/login'
     | '/posts'
     | '/user'
     | '/route-a'
@@ -313,8 +370,11 @@ export interface FileRouteTypes {
     | '/_pathlessLayout'
     | '/deferred'
     | '/redirect'
+    | '/welcome'
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
+    | '/dashboad/'
+    | '/login/'
     | '/posts/'
     | '/user/'
     | '/_pathlessLayout/_nested-layout/route-a'
@@ -329,6 +389,9 @@ export interface RootRouteChildren {
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
   DeferredRoute: typeof DeferredRoute
   RedirectRoute: typeof RedirectRoute
+  WelcomeRoute: typeof WelcomeRoute
+  DashboadIndexRoute: typeof DashboadIndexRoute
+  LoginIndexRoute: typeof LoginIndexRoute
   UserIndexRoute: typeof UserIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
@@ -339,6 +402,9 @@ const rootRouteChildren: RootRouteChildren = {
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
   DeferredRoute: DeferredRoute,
   RedirectRoute: RedirectRoute,
+  WelcomeRoute: WelcomeRoute,
+  DashboadIndexRoute: DashboadIndexRoute,
+  LoginIndexRoute: LoginIndexRoute,
   UserIndexRoute: UserIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
@@ -358,6 +424,9 @@ export const routeTree = rootRoute
         "/_pathlessLayout",
         "/deferred",
         "/redirect",
+        "/welcome",
+        "/dashboad/",
+        "/login/",
         "/user/",
         "/posts_/$postId/deep"
       ]
@@ -384,6 +453,9 @@ export const routeTree = rootRoute
     "/redirect": {
       "filePath": "redirect.tsx"
     },
+    "/welcome": {
+      "filePath": "welcome.tsx"
+    },
     "/_pathlessLayout/_nested-layout": {
       "filePath": "_pathlessLayout/_nested-layout.tsx",
       "parent": "/_pathlessLayout",
@@ -395,6 +467,12 @@ export const routeTree = rootRoute
     "/posts/$postId": {
       "filePath": "posts.$postId.tsx",
       "parent": "/posts"
+    },
+    "/dashboad/": {
+      "filePath": "dashboad/index.tsx"
+    },
+    "/login/": {
+      "filePath": "login/index.tsx"
     },
     "/posts/": {
       "filePath": "posts.index.tsx",

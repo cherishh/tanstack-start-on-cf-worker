@@ -73,11 +73,11 @@ function RootComponent() {
 function RootDocument({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
-    <html className={theme}>
+    <html className={`h-full ${theme}`}>
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className='h-full'>
         <div className='p-2 flex gap-2 text-lg'>
           <Link
             to='/'
@@ -129,8 +129,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             This Route Does Not Exist
           </Link>
-        </div>
-        <div>
           <ModeToggle />
         </div>
         <hr />
