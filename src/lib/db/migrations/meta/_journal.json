@@ -15,6 +15,13 @@
       "when": 1747983427469,
       "tag": "0001_lush_skreet",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1748002100821,
+      "tag": "0002_true_steve_rogers",
+      "breakpoints": true
     }
   ]
 }

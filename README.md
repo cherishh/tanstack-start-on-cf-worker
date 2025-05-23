@@ -22,5 +22,7 @@
 - [ ] add auth
 - [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 - [ ] add redis/upstash rate limit
-- [ ] add logging/sentry
 - [ ] sitemap
+
+#### future
+- [ ] add logging/sentry

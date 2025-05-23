@@ -1,5 +1,5 @@
 import { db } from './index';
-import { usersTable, postsTable } from './schema';
+import { usersTable, postsTable } from './schema/test-schema';
 import { eq } from 'drizzle-orm';
 
 async function seed() {
