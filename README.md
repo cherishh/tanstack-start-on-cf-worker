@@ -19,13 +19,13 @@
 ### todo
 - [x] setup shadcn/ui
 - [x] add theme
-- [ ] add auth
+- [x] add auth
 - [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 - [ ] add redis/upstash rate limit
+- [ ] add logging/sentry
 - [ ] sitemap
 
 #### future
-- [ ] add logging/sentry
 
 
 - auth 流程

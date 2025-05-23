@@ -129,6 +129,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             This Route Does Not Exist
           </Link>
+          <Link to='/welcome'>welcome</Link>
           <ModeToggle />
         </div>
         <hr />
