@@ -5,8 +5,12 @@ import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary';
 import { NotFound } from '@/components/NotFound';
 import appCss from '@/styles/app.css?url';
 import { seo } from '@/utils/seo';
+import { ThemeProvider, useTheme } from '@/components/theme-provider';
+import { getThemeServerFn } from '@/lib/theme';
+import { ModeToggle } from '@/components/mode-toggle';
 
 export const Route = createRootRoute({
+  loader: () => getThemeServerFn(),
   head: () => ({
     meta: [
       {
@@ -56,16 +60,20 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const data = Route.useLoaderData();
   return (
-    <RootDocument>
-      <Outlet />
-    </RootDocument>
+    <ThemeProvider theme={data}>
+      <RootDocument>
+        <Outlet />
+      </RootDocument>
+    </ThemeProvider>
   );
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
   return (
-    <html>
+    <html className={theme}>
       <head>
         <HeadContent />
       </head>
@@ -121,6 +129,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             This Route Does Not Exist
           </Link>
+        </div>
+        <div>
+          <ModeToggle />
         </div>
         <hr />
         {children}

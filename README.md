@@ -18,7 +18,7 @@
 
 ### todo
 - [x] setup shadcn/ui
-- [ ] add theme
+- [x] add theme
 - [ ] add auth
 - [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 - [ ] add redis/upstash rate limit
