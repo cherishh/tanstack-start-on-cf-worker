@@ -17,6 +17,7 @@ function Home() {
           onClick={() =>
             signIn.social({
               provider: 'github',
+              callbackURL: '/welcome',
             })
           }
         >

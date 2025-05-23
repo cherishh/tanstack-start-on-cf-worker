@@ -26,3 +26,8 @@
 
 #### future
 - [ ] add logging/sentry
+
+
+- auth 流程
+- 直接调接口跑通
+- login form？
