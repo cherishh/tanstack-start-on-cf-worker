@@ -18,6 +18,7 @@
     "@tanstack/react-router": "^1.116.0",
     "@tanstack/react-router-devtools": "^1.116.0",
     "@tanstack/react-start": "^1.116.1",
+    "@tanstack/start": "^1.120.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
@@ -29,7 +30,6 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.1.7",
     "tsx": "^4.19.4",
-    "tw-animate-css": "^1.3.0",
     "vinxi": "0.5.3"
   },
   "devDependencies": {
@@ -40,6 +40,7 @@
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.31.1",
     "nitro-cloudflare-dev": "^0.2.2",
+    "tw-animate-css": "^1.3.0",
     "typescript": "^5.7.2",
     "unenv": "^1.10.0",
     "vite": "^6.3.2",
