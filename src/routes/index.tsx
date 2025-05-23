@@ -24,6 +24,15 @@ function Home() {
           sign in with github
         </Button>
       )}
+      <div className='mt-4'>
+        <Button
+          onClick={() => {
+            throw new Error('test error');
+          }}
+        >
+          test error
+        </Button>
+      </div>
     </div>
   );
 }
