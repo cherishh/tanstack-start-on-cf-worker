@@ -1,7 +1,7 @@
 import { Await, createFileRoute } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
 import { Suspense, useState } from 'react';
-import { getBindings } from '~/utils/cf-bindings';
+import { getBindings } from '@/utils/cf-bindings';
 
 const personServerFn = createServerFn({ method: 'GET' })
   .validator((d: string) => d)
