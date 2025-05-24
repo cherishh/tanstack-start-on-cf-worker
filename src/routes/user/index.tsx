@@ -1,12 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useRouter } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
-import { getUserById } from '../../lib/db/queries/select';
+import { getLikesCount, getUserById } from '../../lib/db/queries/select';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import FancyProgress from '@/components/fancy-progress';
 import { useState, useEffect } from 'react';
 import { BASE_URL } from '@/utils/base-url';
+import { updateLikesCount } from '../../lib/db/queries/update';
 
 const userServerFn = createServerFn({ method: 'GET' })
   .validator((d: number) => d)
@@ -14,26 +15,37 @@ const userServerFn = createServerFn({ method: 'GET' })
     return getUserById(id);
   });
 
+const getLikesCountServerFn = createServerFn({ method: 'GET' }).handler(() => {
+  return getLikesCount();
+});
+
+const addLikesCountServerFn = createServerFn({ method: 'POST' })
+  .validator((d: number) => d)
+  .handler(({ data: count }) => {
+    return updateLikesCount(count);
+  });
+
 export const Route = createFileRoute('/user/')({
   loader: async () => {
-    const user = await userServerFn({ data: 1 });
-    const apiRes = await fetch(`${BASE_URL}/api/test`, {
+    const userPromise = userServerFn({ data: 1 });
+    const likesPromise = getLikesCountServerFn();
+    const apiResPromise = fetch(`${BASE_URL}/api/test`, {
       headers: {
         'cf-ipcountry': 'CN',
       },
-    });
-    if (!apiRes.ok) {
-      throw new Error('Failed to fetch data');
-    }
-    const data = await apiRes.json();
-    console.log('data', data);
-    return { user, test: data };
+    }).then(res => res.json());
+
+    const [user, likes, count] = await Promise.all([userPromise, likesPromise, apiResPromise]);
+    return { user, count, likes };
   },
   component: RouteComponent,
+  errorComponent: () => <div>error</div>,
 });
 
 function RouteComponent() {
-  const { user, test } = Route.useLoaderData();
+  const router = useRouter();
+  const { user, count, likes } = Route.useLoaderData();
+  const [pending, setPending] = useState(false);
 
   return (
     <div>
@@ -41,8 +53,22 @@ function RouteComponent() {
         <pre>{JSON.stringify(user, null, 2)}</pre>
       </h2>
       <h2>
-        <pre>{JSON.stringify(test, null, 2)}</pre>
+        <pre>{JSON.stringify(count, null, 2)}</pre>
       </h2>
+      <div>
+        <div>likes: {likes}</div>
+        <Button
+          disabled={pending}
+          onClick={async () => {
+            setPending(true);
+            await addLikesCountServerFn({ data: likes + 1 });
+            await router.invalidate();
+            setPending(false);
+          }}
+        >
+          👍
+        </Button>
+      </div>
     </div>
   );
 }

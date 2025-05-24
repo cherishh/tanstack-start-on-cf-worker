@@ -20,8 +20,16 @@ export const postsTable = pgTable('dev_posts_table', {
     .$onUpdate(() => new Date()),
 });
 
+export const likesTable = pgTable('dev_likes_table', {
+  id: serial('id').primaryKey(),
+  count: integer('count').notNull().default(1),
+});
+
 export type InsertUser = typeof usersTable.$inferInsert;
 export type SelectUser = typeof usersTable.$inferSelect;
 
 export type InsertPost = typeof postsTable.$inferInsert;
 export type SelectPost = typeof postsTable.$inferSelect;
+
+export type InsertLike = typeof likesTable.$inferInsert;
+export type SelectLike = typeof likesTable.$inferSelect;

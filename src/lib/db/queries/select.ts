@@ -1,6 +1,6 @@
 import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
-import { SelectUser, usersTable, postsTable } from '../schema/test-schema';
+import { SelectUser, usersTable, postsTable, SelectLike, likesTable } from '../schema/test-schema';
 
 export async function getUserById(id: SelectUser['id']): Promise<
   Array<{
@@ -57,4 +57,10 @@ export async function getPostsForLast24Hours(
     .orderBy(asc(postsTable.title), asc(postsTable.id))
     .limit(pageSize)
     .offset((page - 1) * pageSize);
+}
+
+export async function getLikesCount(): Promise<number> {
+  const result = await db.select({ count: likesTable.count }).from(likesTable);
+  // 只会有一条记录，取出 count 字段
+  return result.length > 0 ? result[0].count : 0;
 }
