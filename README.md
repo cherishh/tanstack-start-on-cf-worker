@@ -20,14 +20,10 @@
 - [x] setup shadcn/ui
 - [x] add theme
 - [x] add auth
-- [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 - [ ] add redis/upstash rate limit
-- [ ] add logging/sentry
+- [x] add logging/sentry
 - [ ] sitemap
+- [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 
 #### future
 
-
-- auth 流程
-- 直接调接口跑通
-- login form？

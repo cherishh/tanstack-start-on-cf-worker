@@ -2,11 +2,11 @@ import { createFileRoute } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
 import { getUserById } from '../../lib/db/queries/select';
 import { Button } from '@/components/ui/button';
-import Invoice from '@/components/invoice';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import FancyProgress from '@/components/fancy-progress';
 import { useState, useEffect } from 'react';
+import { BASE_URL } from '@/utils/base-url';
 
 const userServerFn = createServerFn({ method: 'GET' })
   .validator((d: number) => d)
@@ -17,14 +17,37 @@ const userServerFn = createServerFn({ method: 'GET' })
 export const Route = createFileRoute('/user/')({
   loader: async () => {
     const user = await userServerFn({ data: 1 });
-    return { user };
+    const apiRes = await fetch(`${BASE_URL}/api/test`, {
+      headers: {
+        'cf-ipcountry': 'CN',
+      },
+    });
+    if (!apiRes.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    const data = await apiRes.json();
+    console.log('data', data);
+    return { user, test: data };
   },
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { user } = Route.useLoaderData();
+  const { user, test } = Route.useLoaderData();
 
+  return (
+    <div>
+      <h2>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </h2>
+      <h2>
+        <pre>{JSON.stringify(test, null, 2)}</pre>
+      </h2>
+    </div>
+  );
+}
+
+function ProgressCard() {
   const [progress, setProgress] = useState(35);
   const [autoProgress, setAutoProgress] = useState(0);
 
@@ -57,10 +80,6 @@ function RouteComponent() {
 
   return (
     <div>
-      <h2>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
-      </h2>
-      <Button>Click me</Button>
       <hr className='my-4' />
       {/* <Invoice /> */}
       <div className='w-full max-w-3xl mx-auto p-4 space-y-8'>

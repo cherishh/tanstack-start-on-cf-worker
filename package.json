@@ -22,6 +22,8 @@
     "@tanstack/react-router-devtools": "^1.116.0",
     "@tanstack/react-start": "^1.116.1",
     "@tanstack/start": "^1.120.7",
+    "@upstash/ratelimit": "^2.0.5",
+    "@upstash/redis": "^1.34.9",
     "better-auth": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

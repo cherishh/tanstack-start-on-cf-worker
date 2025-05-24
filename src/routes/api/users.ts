@@ -11,7 +11,7 @@ export const APIRoute = createAPIFileRoute('/api/users')({
     }
     // Access CF bindings in API Route
     const bindings = getBindings();
-    const deferredCount = await bindings.CACHE.get('queryCount');
+    const deferredCount = await bindings.TANSTACK.get('queryCount');
 
     const data = (await res.json()) as Array<any>;
 
