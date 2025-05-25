@@ -34,5 +34,7 @@
 - [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 
 #### future
+- [ ] fix theme, use local not server
 
-- fix ui-theme
+### problem
+- ONLY HAPPENS TO API ROUTE. On cf, hard refresh cause call to api/test fails. No idea why because on build preview it's fine. only on production. and no idea how to inspect cus cf log only shows client side error.

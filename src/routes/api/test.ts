@@ -3,6 +3,7 @@ import { Redis } from '@upstash/redis/cloudflare';
 
 export const APIRoute = createAPIFileRoute('/api/test')({
   GET: async ({ request, params, env }) => {
+    console.log('get test api', JSON.stringify(request));
     const redis = Redis.fromEnv(
       env ?? {
         UPSTASH_REDIS_REST_URL: 'https://fine-grouper-27226.upstash.io',
