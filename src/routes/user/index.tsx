@@ -1,4 +1,4 @@
-import { createFileRoute, useRouter } from '@tanstack/react-router';
+import { createFileRoute, useRouter, redirect } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
 import { getLikesCount, getUserById } from '../../lib/db/queries/select';
 import { Button } from '@/components/ui/button';
@@ -26,7 +26,14 @@ const addLikesCountServerFn = createServerFn({ method: 'POST' })
   });
 
 export const Route = createFileRoute('/user/')({
-  loader: async () => {
+  beforeLoad: async ({ context }) => {
+    console.log('before load - user index', context.user);
+    // TODO: 神奇，如果注释掉下面 if，则上面 console 取到 user 为空。如果加上 if，则又能取到。
+    if (!context.user) {
+      throw redirect({ to: '/' });
+    }
+  },
+  loader: async ({ context }) => {
     const userPromise = userServerFn({ data: 1 });
     const likesPromise = getLikesCountServerFn();
     const apiResPromise = fetch(`${BASE_URL}/api/test`, {

@@ -20,14 +20,19 @@
 - [x] setup shadcn/ui
 - [x] add theme
 - [x] add auth
-- [ ] add redis/upstash rate limit
+  - [x] login/logout function
+  - [x] work with tanstack query
+  - [x] authorized api
+  - [x] authorized page
+  - [x] auth middleware
+  - [x] login/signup page
+- [x] add redis/upstash
+  - [x] added cloudflare KV also
 - [x] add logging/sentry
+- [ ] check AI stuff
 - [ ] sitemap
 - [ ] ~~add analytics/posthog~~ not working for now, maybe other product
 
 #### future
 
-- middleware 没 run？？
-- signin/signup page
-- why 他没有 global middleware?
-- scripts 抄过来
+- fix ui-theme

@@ -1,4 +1,6 @@
-import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router';
+import type { QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import * as React from 'react';
 import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary';
@@ -9,9 +11,30 @@ import { ThemeProvider, useTheme } from '@/components/theme-provider';
 import { getThemeServerFn } from '@/lib/theme';
 import { ModeToggle } from '@/components/mode-toggle';
 import { wrapCreateRootRouteWithSentry } from '@sentry/tanstackstart-react';
+import { createServerFn } from '@tanstack/react-start';
+import { getWebRequest } from '@tanstack/react-start/server';
+import { auth } from '@/lib/auth';
+
+const getUser = createServerFn({ method: 'GET' }).handler(async () => {
+  const { headers } = getWebRequest()!;
+  const session = await auth.api.getSession({ headers });
+
+  return session?.user || null;
+});
 
 export const Route = wrapCreateRootRouteWithSentry(
-  createRootRoute({
+  createRootRouteWithContext<{
+    queryClient: QueryClient;
+    user: Awaited<ReturnType<typeof getUser>>;
+  }>()({
+    beforeLoad: async ({ context }) => {
+      console.log('before load root', context.user);
+      const user = await context.queryClient.fetchQuery({
+        queryKey: ['user'],
+        queryFn: ({ signal }) => getUser({ signal }),
+      }); // we're using react-query for caching, see router.tsx
+      return { user };
+    },
     loader: () => getThemeServerFn(),
     head: () => ({
       meta: [
@@ -81,7 +104,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className='h-full'>
-        <div className='p-2 flex gap-2 text-lg'>
+        <div className='p-2 flex gap-2 text-lg items-center'>
           <Link
             to='/'
             activeProps={{
@@ -141,18 +164,20 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             llm
           </Link>
           <Link
-            to='/dashboad'
+            to='/dashboard'
             activeProps={{
               className: 'font-bold',
             }}
           >
-            dashboad
+            dashboard
           </Link>
+          <div className='flex-1' />
           <ModeToggle />
         </div>
         <hr />
         {children}
         <TanStackRouterDevtools position='bottom-right' />
+        <ReactQueryDevtools buttonPosition='bottom-left' />
         <Scripts />
       </body>
     </html>

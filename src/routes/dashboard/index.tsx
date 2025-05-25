@@ -4,14 +4,7 @@ import { signOut } from '@/lib/auth-client';
 import { useRouter } from '@tanstack/react-router';
 import { useSession } from '@/lib/auth-client';
 
-export const Route = createFileRoute('/dashboad/')({
-  beforeLoad: async ({ context }) => {
-    console.log('before load runed.', context);
-    if (!context.user) {
-      throw redirect({ to: '/' });
-    }
-    return { user: context.user };
-  },
+export const Route = createFileRoute('/dashboard/')({
   component: RouteComponent,
 });
 
