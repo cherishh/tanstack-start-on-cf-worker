@@ -22,6 +22,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as UserIndexImport } from './routes/user/index'
 import { Route as PostsIndexImport } from './routes/posts.index'
 import { Route as DashboardIndexImport } from './routes/dashboard/index'
+import { Route as UserDeprecatedImport } from './routes/user/deprecated'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
 import { Route as authSignupImport } from './routes/(auth)/signup'
@@ -94,6 +95,12 @@ const DashboardIndexRoute = DashboardIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => DashboardRouteRoute,
+} as any)
+
+const UserDeprecatedRoute = UserDeprecatedImport.update({
+  id: '/user/deprecated',
+  path: '/user/deprecated',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const PostsPostIdRoute = PostsPostIdImport.update({
@@ -229,6 +236,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsPostIdImport
       parentRoute: typeof PostsRouteImport
     }
+    '/user/deprecated': {
+      id: '/user/deprecated'
+      path: '/user/deprecated'
+      fullPath: '/user/deprecated'
+      preLoaderRoute: typeof UserDeprecatedImport
+      parentRoute: typeof rootRoute
+    }
     '/dashboard/': {
       id: '/dashboard/'
       path: '/'
@@ -357,6 +371,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof authLoginRoute
   '/signup': typeof authSignupRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/user/deprecated': typeof UserDeprecatedRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/user': typeof UserIndexRoute
@@ -374,6 +389,7 @@ export interface FileRoutesByTo {
   '/login': typeof authLoginRoute
   '/signup': typeof authSignupRoute
   '/posts/$postId': typeof PostsPostIdRoute
+  '/user/deprecated': typeof UserDeprecatedRoute
   '/dashboard': typeof DashboardIndexRoute
   '/posts': typeof PostsIndexRoute
   '/user': typeof UserIndexRoute
@@ -396,6 +412,7 @@ export interface FileRoutesById {
   '/(auth)/signup': typeof authSignupRoute
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
+  '/user/deprecated': typeof UserDeprecatedRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/user/': typeof UserIndexRoute
@@ -417,6 +434,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/posts/$postId'
+    | '/user/deprecated'
     | '/dashboard/'
     | '/posts/'
     | '/user'
@@ -433,6 +451,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/signup'
     | '/posts/$postId'
+    | '/user/deprecated'
     | '/dashboard'
     | '/posts'
     | '/user'
@@ -453,6 +472,7 @@ export interface FileRouteTypes {
     | '/(auth)/signup'
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
+    | '/user/deprecated'
     | '/dashboard/'
     | '/posts/'
     | '/user/'
@@ -471,6 +491,7 @@ export interface RootRouteChildren {
   DeferredRoute: typeof DeferredRoute
   LlmRoute: typeof LlmRoute
   RedirectRoute: typeof RedirectRoute
+  UserDeprecatedRoute: typeof UserDeprecatedRoute
   UserIndexRoute: typeof UserIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
@@ -484,6 +505,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeferredRoute: DeferredRoute,
   LlmRoute: LlmRoute,
   RedirectRoute: RedirectRoute,
+  UserDeprecatedRoute: UserDeprecatedRoute,
   UserIndexRoute: UserIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
@@ -506,6 +528,7 @@ export const routeTree = rootRoute
         "/deferred",
         "/llm",
         "/redirect",
+        "/user/deprecated",
         "/user/",
         "/posts_/$postId/deep"
       ]
@@ -567,6 +590,9 @@ export const routeTree = rootRoute
     "/posts/$postId": {
       "filePath": "posts.$postId.tsx",
       "parent": "/posts"
+    },
+    "/user/deprecated": {
+      "filePath": "user/deprecated.tsx"
     },
     "/dashboard/": {
       "filePath": "dashboard/index.tsx",

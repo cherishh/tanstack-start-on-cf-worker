@@ -2,7 +2,7 @@ import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
 import { SelectUser, usersTable, postsTable, SelectLike, likesTable } from '../schema/test-schema';
 
-export async function getUserById(id: SelectUser['id']): Promise<
+export async function getFakeUserById(id: SelectUser['id']): Promise<
   Array<{
     id: number;
     name: string;

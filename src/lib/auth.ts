@@ -1,16 +1,12 @@
 import { betterAuth } from 'better-auth';
+import { admin } from 'better-auth/plugins';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db } from '@/lib/db'; // your drizzle instance
 import { reactStartCookies } from 'better-auth/react-start';
 import * as schema from './db/schema/auth-schema';
 
 export const auth = betterAuth({
-  trustedOrigins: [
-    'http://localhost:3000',
-    'http://localhost:8787',
-    'http://localhost:5173',
-    'tanstack-start-on-workers-v0.tuxi.workers.dev',
-  ],
+  trustedOrigins: ['http://localhost:3000', 'tanstack-start-on-workers-v0.tuxi.workers.dev'],
   emailAndPassword: {
     enabled: true,
   },
@@ -20,7 +16,7 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
-  plugins: [reactStartCookies()], // make sure this is the last plugin in the array
+  plugins: [admin(), reactStartCookies()], // make sure this is the last plugin in the array
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true,
