@@ -27,3 +27,7 @@
 
 #### future
 
+- middleware 没 run？？
+- signin/signup page
+- why 他没有 global middleware?
+- scripts 抄过来

@@ -132,7 +132,22 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             This Route Does Not Exist
           </Link>
-          <Link to='/welcome'>welcome</Link>
+          <Link
+            to='/llm'
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            llm
+          </Link>
+          <Link
+            to='/dashboad'
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            dashboad
+          </Link>
           <ModeToggle />
         </div>
         <hr />

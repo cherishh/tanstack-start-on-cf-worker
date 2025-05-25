@@ -18,7 +18,7 @@ await authClient.signIn.social({
   /**
    * A URL to redirect if the user is newly registered
    */
-  newUserCallbackURL: '/welcome',
+  newUserCallbackURL: '/dashboard',
   /**
    * disable the automatic redirect to the provider.
    * @default false

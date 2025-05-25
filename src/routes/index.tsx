@@ -10,14 +10,14 @@ function Home() {
   const { data: session } = useSession();
 
   return (
-    <div className='p-2'>
-      <h3>Welcome Home!!!</h3>
+    <div className='flex flex-col items-center justify-center h-screen mb-2'>
+      <h1 className='text-2xl font-bold mb-4'> Home</h1>
       {!session && (
         <Button
           onClick={() =>
             signIn.social({
               provider: 'github',
-              callbackURL: '/welcome',
+              callbackURL: '/dashboard',
             })
           }
         >
