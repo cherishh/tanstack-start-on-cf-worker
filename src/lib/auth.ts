@@ -16,7 +16,12 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
-  plugins: [admin(), reactStartCookies()], // make sure this is the last plugin in the array
+  plugins: [
+    admin({
+      adminRoles: ['admin', 'superadmin'],
+    }),
+    reactStartCookies(),
+  ], // make sure this is the last plugin in the array
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true,

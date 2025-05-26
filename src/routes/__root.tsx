@@ -14,6 +14,7 @@ import { wrapCreateRootRouteWithSentry } from '@sentry/tanstackstart-react';
 import { createServerFn } from '@tanstack/react-start';
 import { getWebRequest } from '@tanstack/react-start/server';
 import { auth } from '@/lib/auth';
+import { Toaster } from '@/components/ui/sonner';
 
 const getUser = createServerFn({ method: 'GET' }).handler(async () => {
   const { headers } = getWebRequest()!;
@@ -176,6 +177,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </div>
         <hr />
         {children}
+        <Toaster />
         <TanStackRouterDevtools position='bottom-right' />
         <ReactQueryDevtools buttonPosition='bottom-left' />
         <Scripts />
