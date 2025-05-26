@@ -30,7 +30,7 @@
   - [x] added cloudflare KV also
 - [x] add logging/sentry
 - [ ] check AI stuff - having network issues now
-  - [ ] integrate with ai sdk
+  - [ ] ~~integrate with ai sdk~~ cuz you-know-why, network issue cant solve. which means cant use ai sdk. have to use official apis.
   - [ ] add llm page
   - [ ] add db relationship
   - [ ] MCP use
