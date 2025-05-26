@@ -29,7 +29,7 @@
 - [x] add redis/upstash
   - [x] added cloudflare KV also
 - [x] add logging/sentry
-- [ ] check AI stuff
+- [ ] check AI stuff - having network issues now
   - [ ] integrate with ai sdk
   - [ ] add llm page
   - [ ] add db relationship
@@ -38,8 +38,8 @@
 - [ ] ~~add analytics/posthog~~ not working for now, find other product
 
 #### fix
-- [ ] fix theme, use local not server
-- [ ] fix auth role. (cant add admin)
+- [x] fix theme, use local not server
+- [x] fix auth role. (cant add admin)
 
 ### problem
 - API ROUTE NOT WORKING WITH CF SERVER SIDE. (aka when user hard refresh api route errors). See `src/routes/user/-index-deprecated.tsx` for details.

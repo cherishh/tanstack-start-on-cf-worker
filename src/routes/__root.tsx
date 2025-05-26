@@ -1,15 +1,13 @@
 import type { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router';
+import { HeadContent, Link, Outlet, Scripts, createRootRouteWithContext, ScriptOnce } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import * as React from 'react';
 import { DefaultCatchBoundary } from '@/components/DefaultCatchBoundary';
 import { NotFound } from '@/components/NotFound';
 import appCss from '@/styles/app.css?url';
 import { seo } from '@/utils/seo';
-import { ThemeProvider, useTheme } from '@/components/theme-provider';
-import { getThemeServerFn } from '@/lib/theme';
-import { ModeToggle } from '@/components/mode-toggle';
+import ThemeToggle from '@/components/mode-toggle';
 import { wrapCreateRootRouteWithSentry } from '@sentry/tanstackstart-react';
 import { createServerFn } from '@tanstack/react-start';
 import { getWebRequest } from '@tanstack/react-start/server';
@@ -36,7 +34,6 @@ export const Route = wrapCreateRootRouteWithSentry(
       }); // we're using react-query for caching, see router.tsx
       return { user };
     },
-    loader: () => getThemeServerFn(),
     head: () => ({
       meta: [
         {
@@ -89,22 +86,26 @@ export const Route = wrapCreateRootRouteWithSentry(
 function RootComponent() {
   const data = Route.useLoaderData();
   return (
-    <ThemeProvider theme={data}>
-      <RootDocument>
-        <Outlet />
-      </RootDocument>
-    </ThemeProvider>
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
   );
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { theme } = useTheme();
   return (
-    <html className={`h-full ${theme}`}>
+    <html suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body className='h-full'>
+        <ScriptOnce>
+          {`document.documentElement.classList.toggle(
+            'dark',
+            localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            )`}
+        </ScriptOnce>
+
         <div className='p-2 flex gap-2 text-lg items-center'>
           <Link
             to='/'
@@ -173,7 +174,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             dashboard
           </Link>
           <div className='flex-1' />
-          <ModeToggle />
+          <ThemeToggle />
         </div>
         <hr />
         {children}
