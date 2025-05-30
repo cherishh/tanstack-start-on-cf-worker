@@ -1,9 +1,9 @@
 ## Tanstack Start on Workers v0
+exploring tanstack start on cloudflare workers.
 
 ### notes
 - drizzle + neon is ok
-  - you need `.dev.vars.production` & `.dev.vars` as your `.env` & `.env.local`. (shit. why does cf has to defined a new file???)
-  - you'll 
+  - you need `.dev.vars.production` & `.dev.vars` as your `.env` & `.env.local`. (cf doesn't use .env ¯\_(ツ)_/¯)
 - can bind cf KV
 - shadcn/ui
   - ref: https://ui.shadcn.com/docs/installation/tanstack
@@ -43,3 +43,4 @@
 
 ### problem
 - API ROUTE NOT WORKING WITH CF SERVER SIDE. (aka when user hard refresh api route errors). See `src/routes/user/-index-deprecated.tsx` for details.
+  - see issue: https://github.com/TanStack/router/issues/4255

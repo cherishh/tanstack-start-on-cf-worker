@@ -1,6 +1,6 @@
 import { Await, createFileRoute } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import { getBindings } from '@/utils/cf-bindings';
 
 const personServerFn = createServerFn({ method: 'GET' })
@@ -43,19 +43,20 @@ function Deferred() {
       <div data-testid='regular-person'>
         {person.name} - {person.randomNumber}
       </div>
-      <Suspense fallback={<div>Loading person...</div>}>
-        <Await
-          promise={deferredPerson}
-          children={data => (
-            <div data-testid='deferred-person'>
-              {data.name} - {data.randomNumber} - Cache hit Count: {data.queryCount} 👈 From Cloudflare KV
-            </div>
-          )}
-        />
-      </Suspense>
-      <Suspense fallback={<div>Loading stuff...</div>}>
-        <Await promise={deferredStuff} children={data => <h3 data-testid='deferred-stuff'>{data}</h3>} />
-      </Suspense>
+      <Await
+        fallback={<div>Loading person...</div>}
+        promise={deferredPerson}
+        children={data => (
+          <div data-testid='deferred-person'>
+            {data.name} - {data.randomNumber} - Cache hit Count: {data.queryCount} 👈 From Cloudflare KV
+          </div>
+        )}
+      />
+      <Await
+        fallback={<div>Loading stuff...</div>} // 相当于 suspense
+        promise={deferredStuff}
+        children={data => <h3 data-testid='deferred-stuff'>{data}</h3>}
+      />
       <div>Count: {count}</div>
       <div>
         <button onClick={() => setCount(count + 1)}>Increment</button>
