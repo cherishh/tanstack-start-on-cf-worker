@@ -1,4 +1,4 @@
-## TanStack Start on Workers v0
+## TanStack Start template
 
 An experimental starter template that brings together modern web development building blocks using [TanStack Start](https://github.com/TanStack/start), deployed on [Cloudflare Workers](https://workers.cloudflare.com/).
 
