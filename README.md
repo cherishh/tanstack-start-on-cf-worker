@@ -1,20 +1,5 @@
 ## Tanstack Start on Workers v0
-exploring tanstack start on cloudflare workers.
-
-### notes
-- drizzle + neon is ok
-  - you need `.dev.vars.production` & `.dev.vars` as your `.env` & `.env.local`. (cf doesn't use .env ¯\_(ツ)_/¯)
-- can bind cf KV
-- shadcn/ui
-  - ref: https://ui.shadcn.com/docs/installation/tanstack
-  - pnpm remove tailwindcss postcss(you need tw v4)
-  - change postcss.config.mjs
-  - ts config ~/ -> @/ (must)
-  - change app.css(remove base & components, add @import "tailwindcss")
-  - pnpm dlx shadcn@canary init ... may fail.
-  - if fail, go with mannully install(not that hard)
-  - done, pnpm dlx shadcn@canary add button
-
+Putting all mordern web dev pieces together with Tanstack-Start. Also exploring tanstack start hosting on cloudflare workers.
 
 ### todo
 - [x] setup shadcn/ui
@@ -30,9 +15,7 @@ exploring tanstack start on cloudflare workers.
   - [x] added cloudflare KV also
 - [x] add logging/sentry
 - [ ] check AI stuff - having network issues now
-  - [ ] ~~integrate with ai sdk~~ cuz you-know-why, network issue cant solve. which means cant use ai sdk. have to use official apis.
-  - [ ] add llm page
-  - [ ] add db relationship
+  - [ ] ~~integrate with ai sdk~~ cuz you-know-why, network issue cant solve for now. which means cant use ai sdk. have to use official apis. - this one only applies to me. I live in China mainland.
   - [ ] MCP use
 - [ ] sitemap
 - [ ] ~~add analytics/posthog~~ not working for now, find other product
@@ -41,6 +24,15 @@ exploring tanstack start on cloudflare workers.
 - [x] fix theme, use local not server
 - [x] fix auth role. (cant add admin)
 
+### notes
+- secrets
+  - you need `.dev.vars.production` & `.dev.vars` as your `.env` & `.env.local`. (cf doesn't use .env ¯\_(ツ)_/¯). Best just use wrangler to set secrets.
+- can bind cf KV easily
+- shadcn/ui
+  - you need install `@tanstack/start` to make shadcn cli installation work correctly. See: https://github.com/shadcn-ui/ui/issues/7391#issuecomment-2906796401
+
 ### problem
 - API ROUTE NOT WORKING WITH CF SERVER SIDE. (aka when user hard refresh api route errors). See `src/routes/user/-index-deprecated.tsx` for details.
   - see issue: https://github.com/TanStack/router/issues/4255
+ 
+have fun:)
