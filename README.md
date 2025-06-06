@@ -1,41 +1,94 @@
-## Tanstack Start on Workers v0
-Putting all mordern web dev pieces together with Tanstack-Start. Also exploring tanstack start hosting on cloudflare workers.
+## TanStack Start on Workers v0
 
-## demo
+An experimental starter template that brings together modern web development building blocks using [TanStack Start](https://github.com/TanStack/start), deployed on [Cloudflare Workers](https://workers.cloudflare.com/).
+
+## 🚀 Demo  
 https://tanstack-start-on-workers-v0.tuxi.workers.dev/
 
-### todo
-- [x] setup shadcn/ui
-- [x] add theme
-- [x] add auth
-  - [x] login/logout function
-  - [x] work with tanstack query
-  - [x] authorized api
-  - [x] authorized page
-  - [x] auth middleware
-  - [x] login/signup page
-- [x] add redis/upstash
-  - [x] added cloudflare KV also
-- [x] add logging/sentry
-- [ ] check AI stuff - having network issues now
-  - [ ] ~~integrate with ai sdk~~ cuz you-know-why, network issue cant solve for now. which means cant use ai sdk. have to use official apis. - this one only applies to me. I live in China mainland.
-  - [ ] MCP use
-- [ ] sitemap
-- [ ] ~~add analytics/posthog~~ not working for now, find other product
+---
 
-#### fix
-- [x] fix theme, use local not server
-- [x] fix auth role. (cant add admin)
+## ✅ Features & Progress
 
-### notes
-- secrets
-  - you need `.dev.vars.production` & `.dev.vars` as your `.env` & `.env.local`. (cf doesn't use .env ¯\_(ツ)_/¯). Best just use wrangler to set secrets.
-- can bind cf KV easily
-- shadcn/ui
-  - you need install `@tanstack/start` to make shadcn cli installation work correctly. See: https://github.com/shadcn-ui/ui/issues/7391#issuecomment-2906796401
+### Completed
 
-### problem
-- API ROUTE NOT WORKING WITH CF SERVER SIDE. (aka when user hard refresh api route errors). See `src/routes/user/-index-deprecated.tsx` for details.
-  - see issue: https://github.com/TanStack/router/issues/4255
- 
-have fun:)
+- **UI & Styling**
+  - Integrated `shadcn/ui` for component styling
+  - Dark/light theme support
+
+- **Authentication**
+  - Powered by [`Better-Auth`](https://github.com/StefanJee/better-auth) 
+  - Login/logout functionality
+  - Protected API routes and pages
+  - Auth middleware
+  - Login/Signup pages
+  - Role-based access control
+
+- **Data Layer**
+  - **Database**: PostgreSQL via [Neon](https://neon.tech/)
+  - **ORM**: Type-safe queries using [Drizzle ORM](https://orm.drizzle.team/)
+  - **Caching & Storage**:
+    - Redis via Upstash
+    - Cloudflare KV
+
+- **Requests & Validation**
+  - **Data fetching** and **caching** via [TanStack Query](https://tanstack.com/query)
+  - **Schema validation** with [Zod](https://zod.dev)
+
+- **Observability**
+  - Integrated logging and error tracking via Sentry
+
+- **Deployment**
+  - Fully deployed on [Cloudflare Workers](https://workers.cloudflare.com/) using Wrangler
+
+### In Progress / Planned
+
+- **AI Integration**
+  - ⚠️ Currently blocked due to network issues in mainland China (This one only applies if you live inside China mainland)
+    Will use official OpenAI APIs instead of Vercel's AI SDK
+
+- **Sitemap Generation**
+
+- **Analytics**
+  - PostHog not working reliably — looking into alternatives
+
+---
+
+## 🛠️ Fixes & Improvements
+
+- Fixed theme loading: now uses local storage instead of server-side rendering
+- Fixed admin role assignment issue in auth
+
+---
+
+## 📝 Notes
+
+- **Environment & Secrets**
+  - Use `.dev.vars` and `.dev.vars.production` instead of `.env`/`.env.local`  
+    _(Cloudflare Workers doesn’t load `.env` files. Use Wrangler to set secrets.)_
+
+- **Cloudflare KV**
+  - Easy to bind and use in routes/functions
+
+- **Shadcn/UI Integration**
+  - Install `@tanstack/start` first before using the `shadcn` CLI  
+    Reference: https://github.com/shadcn-ui/ui/issues/7391#issuecomment-2906796401
+
+---
+
+## ⚠️ Known Issues
+
+- **API routes break on hard refresh in Cloudflare Workers SSR**  
+  See `src/routes/user/-index-deprecated.tsx`  
+  Related issue: https://github.com/TanStack/router/issues/4255
+
+---
+
+## 🙌 Acknowledgements
+
+Thanks to the TanStack, Better-Auth, Cloudflare, and open-source communities — learned a lot from your work.
+
+PRs, feedback, and ideas are welcome!
+
+---
+
+Have fun! ✨
