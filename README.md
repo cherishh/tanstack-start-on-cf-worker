@@ -85,7 +85,7 @@ https://tanstack-start-on-workers-v0.tuxi.workers.dev/
 
 ## 🙌 Acknowledgements
 
-Thanks to the TanStack, Better-Auth, Cloudflare, and open-source communities — learned a lot from your work.
+Thanks to the TanStack, Better-Auth, Cloudflare, and open-source communities — learned a lot!
 
 PRs, feedback, and ideas are welcome!
 
