@@ -16,7 +16,7 @@ https://tanstack-start-on-workers-v0.tuxi.workers.dev/
   - Dark/light theme support
 
 - **Authentication**
-  - Powered by [`Better-Auth`](https://github.com/StefanJee/better-auth) 
+  - Powered by [Better-Auth](https://github.com/StefanJee/better-auth) 
   - Login/logout functionality
   - Protected API routes and pages
   - Auth middleware
