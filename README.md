@@ -39,6 +39,7 @@ https://tanstack-start-on-workers-v0.tuxi.workers.dev/
 
 - **Deployment**
   - Fully deployed on [Cloudflare Workers](https://workers.cloudflare.com/) using Wrangler
+  - Deployment to other platforms like **Vercel**, **Fly.io**, and **VPS** is also being explored
 
 ### In Progress / Planned
 
