@@ -1,6 +1,9 @@
 ## Tanstack Start on Workers v0
 Putting all mordern web dev pieces together with Tanstack-Start. Also exploring tanstack start hosting on cloudflare workers.
 
+## demo
+https://tanstack-start-on-workers-v0.tuxi.workers.dev/
+
 ### todo
 - [x] setup shadcn/ui
 - [x] add theme
