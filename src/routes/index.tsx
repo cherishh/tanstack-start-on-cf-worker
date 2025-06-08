@@ -50,8 +50,9 @@ function Home() {
             throw new Error('test error');
           }}
         >
-          test error
+          trigger error
         </Button>
+        <div>👆This will trigger an error & will be shown on Sentry.</div>
       </div>
     </div>
   );
